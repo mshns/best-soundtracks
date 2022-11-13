@@ -1,0 +1,277 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0 auto;
+  font-family: "Russo One", sans-serif;
+  font-weight: 100;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper {
+  flex-direction: column;
+}
+
+.header {
+  position: relative;
+  justify-content: space-around;
+  align-items: center;
+  height: 200px;
+  margin-bottom: 50px;
+  background-color: #000;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  right: 0; bottom: -4px;
+  width: 100%;
+  border-bottom: 8px dashed #ff4200;
+  z-index: 0;
+}
+
+.header__logo {
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.header__logo::before {
+  content: "";
+  position: absolute;
+  right: 0; top: -32px;
+  width: 132px; height: 132px;
+  border-radius: 50%;
+  background: #ff4200;
+  z-index: 0;
+}
+
+.header__logo::after {
+  content: "";
+  position: absolute;
+  right: 0; top: -32px;
+  width: 132px; height: 132px;
+  background-image: url(../assets/svg/note.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 50;
+}
+
+.logo__title {
+  margin: 0;
+  color: #fff;
+  font-weight: 100;
+  position: relative;
+  z-index: 100;
+}
+
+.nav__list {
+  display: flex;
+  list-style: none;
+}
+
+.nav__item {
+  margin: 10px;
+  text-decoration: none;
+}
+
+.nav__link {
+  text-decoration: none;
+  font-size: 24px;
+  color: #fff;
+  transition: ease-in-out .2s;
+}
+
+.nav__link:hover {
+  color: #ff4200;
+}
+
+.nav__link_active {
+  color: #ff4200;
+  pointer-events: none;
+}
+
+.header__select {
+  position: absolute;
+  right: 0; top: 0;
+  margin: 10px;
+  padding: 2px 0;
+  font-size: 16px;
+  font-family: "Russo One", sans-serif;
+  font-weight: 100;
+  background-color: #ff4200;
+  border-radius: 2px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.main {
+  flex-direction: column;
+  align-items: center;
+}
+
+.player {
+  width: 820px;
+}
+
+.player__button_play {
+  width: 100px; height: 100px;
+  background-image: url(../assets/svg/play.svg);
+  background-size: contain;
+  background-color: #ff4200;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.player__track {
+  width: 720px;
+}
+
+.track__progress {
+  width: 100%;
+}
+
+.slider {
+  width: 100%;
+  position: relative;
+}
+
+.slider__wrapper {
+  width: 820px;
+  overflow: hidden;
+}
+
+.slider__button_left,
+.slider__button_right {
+  width: 100px;
+  background-image: url(../assets/svg/arrow-left.svg);
+  background-size: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: ease-in-out .3s;
+}
+
+.slider__button_right {
+  background-image: url(../assets/svg/arrow-right.svg);
+}
+
+.slider__button_left:hover,
+.slider__button_right:hover {
+  transform: scale(1.2);
+}
+
+
+.slider__list {
+  width: 2560px;
+  justify-content: space-between;
+}
+
+.slider__item {
+  width: 820px;
+  justify-content: space-between;
+}
+
+.slider__img {
+  width: 400px;
+  height: 400px;
+  background-image: url(../assets/img/titanic.png);
+  background-size: contain;
+  border-radius: 6px;
+  position: relative;
+}
+
+.slider__name {
+  position: absolute;
+  right: 0; bottom: 0;
+  margin: 10px;
+  padding: 10px 20px;
+  font-weight: 100;
+  color: #ff4200;
+  background: rgb(0, 0, 0, .75);
+}
+
+.slider__info {
+  width: 400px;
+  font-weight: 100;
+}
+
+.slider__title {
+  margin: 0;
+  font-weight: 100;
+  color: #ff4200;
+}
+
+.slider__subtitle {
+  margin-top: 0;
+  font-weight: 100;
+}
+
+.slider__description {
+  font-weight: 100;
+  position: relative;
+}
+
+.slider__description::before {
+  content: "";
+  position: absolute;
+  right: 0; top: -8px;
+  width: 100%;
+  border-bottom: 1px dashed #ff4200;
+  z-index: 0;
+}
+
+.footer {
+  position: relative;
+  justify-content: space-around;
+  align-items: center;
+  height: 200px;
+  margin-top: 50px;
+  background-color: #000;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  right: 0; top: -4px;
+  width: 100%;
+  border-top: 8px dashed #ff4200;
+  z-index: 0;
+}
+
+.footer__link,
+.footer__copyright {
+  font-size: 16px;
+  text-align: center;
+  margin: 10px;
+  color: #fff;
+  text-decoration: none;
+  transition: ease-in-out .3s;
+}
+
+.footer__link:hover {
+  color: #ff4200;
+}
+
+.footer__link_school {
+  width: 80px; height: 32px;
+  margin: 10px;
+  background-image: url(../assets/svg/rs_school_js.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: ease-in-out .3s;
+}
+
+.footer__link_school:hover {
+  transform: scale(1.1);
+}
