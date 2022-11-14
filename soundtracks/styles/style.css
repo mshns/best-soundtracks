@@ -211,6 +211,23 @@ body {
   box-shadow: -200px 0 0 194px #000;
 }
 
+.time__progress {
+  position: relative;
+  width: 60px;
+}
+
+.time__progress::before {
+  content: "";
+  position: absolute;
+  right: 5px; top: 0;
+  width: 2px; height: 20px;
+  background: #ff4200;
+}
+
+.time__duration {
+  width: 60px;
+}
+
 .slider-menu {
   width: 840px;
   margin: 30px;
@@ -243,7 +260,7 @@ body {
 
 .slider__wrapper {
   width: 820px;
-
+  overflow: hidden;
 }
 
 .slider__button_left,
@@ -255,7 +272,6 @@ body {
   background-repeat: no-repeat;
   cursor: pointer;
   transition: ease-in-out .3s;
-  z-index: 1000;
 }
 
 .slider__button_right {
@@ -336,18 +352,12 @@ body {
 }
 
 .slider__description {
-  font-weight: 100;
+  margin: 0;
+  height: 324px;
   padding-right: 40px;
+  overflow-y: scroll;
+  font-weight: 100;
   position: relative;
-}
-
-.slider__description::before {
-  content: "";
-  position: absolute;
-  right: 0; top: -8px;
-  width: 100%;
-  border-bottom: 1px dashed #ff4200;
-  z-index: 0;
 }
 
 .footer {

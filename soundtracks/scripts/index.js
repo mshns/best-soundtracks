@@ -1,6 +1,38 @@
 import soundtracksData from "./soundtracks.js";
 
+// language
+
+const langSelect = document.querySelector(".header__select");
+
+if (localStorage.getItem("language")) langSelect.value = localStorage.language;
+
+const logoTitle = document.querySelector(".logo__title");
+
+function translate() {
+  if (langSelect.value === 'english') {
+    logoTitle.innerHTML = 'The Best<br>Soundtracks';
+  } else {
+    logoTitle.innerHTML = 'Лучшие<br>Саундтреки'
+  }
+}
+translate();
+
+langSelect.addEventListener('change', () => {
+  setSlider();
+  translate();
+  localStorage.setItem("language", langSelect.value)
+});
+
+
+
+
+
+
 // slider
+
+const trackTitle = document.querySelector(".track__title");
+const trackDuration = document.querySelector(".time__duration");
+
 
 const sliderImg = document.querySelectorAll(".slider__img");
 const sliderName = document.querySelectorAll(".slider__name");
@@ -8,26 +40,48 @@ const sliderTitle = document.querySelectorAll(".slider__title");
 const sliderSubtitle = document.querySelectorAll(".slider__subtitle");
 const sliderDescription = document.querySelectorAll(".slider__description");
 
-function setSlider (lang) {
-  sliderImg[0].style.backgroundImage = soundtracksData[0][0].image;
-  sliderImg[1].style.backgroundImage = soundtracksData[0][1].image;
-  sliderImg[2].style.backgroundImage = soundtracksData[0][2].image;
+let slideNum = 0;
 
-  sliderName[0].innerHTML = soundtracksData[0][0].nameEn;
-  sliderName[1].innerHTML = soundtracksData[0][1].nameEn;
-  sliderName[2].innerHTML = soundtracksData[0][2].nameEn;
+function setSlider() {
+  let slideNext = slideNum + 1;
+  if (slideNext === soundtracksData[0].length) slideNext = 0;
+  let slidePrev = slideNum - 1;
+  if (slidePrev === -1) slidePrev = soundtracksData[0].length - 1;
 
-  sliderTitle[0].innerHTML = soundtracksData[0][0].trackEn;
-  sliderTitle[1].innerHTML = soundtracksData[0][1].trackEn;
-  sliderTitle[2].innerHTML = soundtracksData[0][2].trackEn;
+  let name = 'nameEn';
+  let track = 'trackEn';
+  let author = 'authorEn';
+  let description = 'descriptionEn';
 
-  sliderSubtitle[0].innerHTML = soundtracksData[0][0].authorEn;
-  sliderSubtitle[1].innerHTML = soundtracksData[0][1].authorEn;
-  sliderSubtitle[2].innerHTML = soundtracksData[0][2].authorEn;
+  if (langSelect.value === 'russian') {
+    name = 'nameRu';
+    track = 'trackRu';
+    author = 'authorRu';
+    description = 'descriptionRu';
+  }
 
-  sliderDescription[0].innerHTML = soundtracksData[0][0].descriptionEn;
-  sliderDescription[1].innerHTML = soundtracksData[0][1].descriptionEn;
-  sliderDescription[2].innerHTML = soundtracksData[0][2].descriptionEn;
+  sliderImg[0].style.backgroundImage = soundtracksData[0][slidePrev].image;
+  sliderImg[1].style.backgroundImage = soundtracksData[0][slideNum].image;
+  sliderImg[2].style.backgroundImage = soundtracksData[0][slideNext].image;
+
+  sliderName[0].innerHTML = soundtracksData[0][slidePrev][name];
+  sliderName[1].innerHTML = soundtracksData[0][slideNum][name];
+  sliderName[2].innerHTML = soundtracksData[0][slideNext][name];
+
+  sliderTitle[0].innerHTML = soundtracksData[0][slidePrev][track];
+  sliderTitle[1].innerHTML = soundtracksData[0][slideNum][track];
+  sliderTitle[2].innerHTML = soundtracksData[0][slideNext][track];
+
+  sliderSubtitle[0].innerHTML = soundtracksData[0][slidePrev][author];
+  sliderSubtitle[1].innerHTML = soundtracksData[0][slideNum][author];
+  sliderSubtitle[2].innerHTML = soundtracksData[0][slideNext][author];
+
+  sliderDescription[0].innerHTML = soundtracksData[0][slidePrev][description];
+  sliderDescription[1].innerHTML = soundtracksData[0][slideNum][description];
+  sliderDescription[2].innerHTML = soundtracksData[0][slideNext][description];
+
+  trackTitle.innerHTML = soundtracksData[0][slideNum][author] + " — " + soundtracksData[0][slideNum][track];
+  trackDuration.innerHTML = soundtracksData[0][slideNum].duration;
 }
 setSlider();
 
@@ -54,17 +108,18 @@ buttonLeft.addEventListener("click", moveLeft);
 buttonRight.addEventListener("click", moveRight);
 
 slider.addEventListener("animationend", function (animationEvent) {
-  const leftContent = leftSlide.innerHTML;
-  const rightContent = rightSlide.innerHTML;
-
   if (animationEvent.animationName === "move-left") {
     slider.classList.remove("transition-left");
-    centerSlide.innerHTML = leftContent;
+    slideNum--;
+    if (slideNum === -1) slideNum = soundtracksData[0].length - 1;
   } else {
     slider.classList.remove("transition-right");
-    centerSlide.innerHTML = rightContent;
+    slideNum++;
+    if (slideNum === soundtracksData[0].length) slideNum = 0;
   }
 
   buttonLeft.addEventListener("click", moveLeft);
   buttonRight.addEventListener("click", moveRight);
+
+  setSlider();
 });
