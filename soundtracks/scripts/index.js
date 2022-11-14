@@ -1,5 +1,5 @@
 import soundtracksData from "./soundtracks.js";
-
+import translationData from "./translation.js";
 // language
 
 const langSelect = document.querySelector(".header__select");
@@ -7,13 +7,24 @@ const langSelect = document.querySelector(".header__select");
 if (localStorage.getItem("language")) langSelect.value = localStorage.language;
 
 const logoTitle = document.querySelector(".logo__title");
+const navLink = document.querySelectorAll(".nav__link");
+const sliderMenuBtn = document.querySelectorAll(".slider-menu__button");
+const footerLink = document.querySelector(".footer__link");
+const copyright = document.querySelector(".footer__copyright");
+
 
 function translate() {
-  if (langSelect.value === 'english') {
-    logoTitle.innerHTML = 'The Best<br>Soundtracks';
-  } else {
-    logoTitle.innerHTML = 'Лучшие<br>Саундтреки'
-  }
+  logoTitle.innerHTML = translationData[0][langSelect.value];
+  navLink[0].innerHTML = translationData[1][langSelect.value];
+  navLink[1].innerHTML = translationData[2][langSelect.value];
+  sliderMenuBtn[0].innerHTML = translationData[3][langSelect.value];
+  sliderMenuBtn[1].innerHTML = translationData[4][langSelect.value];
+  sliderMenuBtn[2].innerHTML = translationData[5][langSelect.value];
+  sliderMenuBtn[3].innerHTML = translationData[6][langSelect.value];
+  sliderMenuBtn[4].innerHTML = translationData[7][langSelect.value];
+  sliderMenuBtn[5].innerHTML = translationData[8][langSelect.value];
+  footerLink.innerHTML = translationData[9][langSelect.value];
+  copyright.innerHTML = translationData[10][langSelect.value];
 }
 translate();
 
