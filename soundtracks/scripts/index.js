@@ -58,6 +58,7 @@ sliderMenuBtn.forEach((element, index) => {
     category = index;
     slideNum = 0;
     setSlider();
+    clearPlayer();
   });
 });
 
