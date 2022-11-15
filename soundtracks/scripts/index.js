@@ -99,7 +99,7 @@ function setSlider() {
   sliderDescription[1].innerHTML = soundtracksData[category][slideNum][description];
   sliderDescription[2].innerHTML = soundtracksData[category][slideNext][description];
 
-  trackTitle.innerHTML = soundtracksData[category][slideNum][author] + " — " + soundtracksData[0][slideNum][track];
+  trackTitle.innerHTML = soundtracksData[category][slideNum][author] + " — " + soundtracksData[category][slideNum][track];
   trackDuration.innerHTML = soundtracksData[category][slideNum].duration;
 }
 setSlider();
@@ -199,15 +199,18 @@ trackRange.addEventListener ('click', () => {
 const volumeButton = document.querySelector('.player-button__volume');
 const volumeLevel = document.querySelector('.player-button__level');
 
+let volumeSave = .6;
+
 audio.volume = volumeLevel.value;
 
 volumeButton.addEventListener('click', () => {
   if (audio.muted === false) {
+    volumeSave = volumeLevel.value;
     audio.muted = true;
     volumeLevel.value = 0;
   } else {
     audio.muted = false;
-    volumeLevel.value = .6;
+    volumeLevel.value = volumeSave;
   }
   volumeButton.classList.toggle('muted');
 });
