@@ -135,8 +135,13 @@ body {
   background-image: url(../assets/svg/play.svg);
   background-size: contain;
   background-color: #ff4200;
+  border: 1px dashed #fff;
   border-radius: 50%;
   cursor: pointer;
+}
+
+.player-button__play.pause {
+  background-image: url(../assets/svg/pause.svg);
 }
 
 .player__track {
@@ -188,6 +193,10 @@ body {
   cursor: pointer;
 }
 
+.player-button__volume.muted {
+  background-image: url(../assets/svg/volume-on.svg);
+}
+
 .player-button__level {
   -webkit-appearance: none;
   position: relative;
@@ -219,9 +228,10 @@ body {
 .time__progress::before {
   content: "";
   position: absolute;
-  right: 5px; top: 0;
-  width: 2px; height: 20px;
-  background: #ff4200;
+  right: 7px; bottom: 0;
+  width: 2px; height: 30px;
+  border-right: 1px dashed #ff4200;
+  transform: rotate(20deg);
 }
 
 .time__duration {

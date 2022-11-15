@@ -1,6 +1,7 @@
 import soundtracksData from "./soundtracks.js";
 import translationData from "./translation.js";
-// language
+
+// language and translation
 
 const langSelect = document.querySelector(".header__select");
 
@@ -11,7 +12,6 @@ const navLink = document.querySelectorAll(".nav__link");
 const sliderMenuBtn = document.querySelectorAll(".slider-menu__button");
 const footerLink = document.querySelector(".footer__link");
 const copyright = document.querySelector(".footer__copyright");
-
 
 function translate() {
   logoTitle.innerHTML = translationData[0][langSelect.value];
@@ -34,16 +34,14 @@ langSelect.addEventListener('change', () => {
   localStorage.setItem("language", langSelect.value)
 });
 
-
-
-
-
-
 // slider
+
+let category = 0;
+let slideNum = 0;
 
 const trackTitle = document.querySelector(".track__title");
 const trackDuration = document.querySelector(".time__duration");
-
+const trackCurrentTime = document.querySelector(".time__progress");
 
 const sliderImg = document.querySelectorAll(".slider__img");
 const sliderName = document.querySelectorAll(".slider__name");
@@ -51,7 +49,17 @@ const sliderTitle = document.querySelectorAll(".slider__title");
 const sliderSubtitle = document.querySelectorAll(".slider__subtitle");
 const sliderDescription = document.querySelectorAll(".slider__description");
 
-let slideNum = 0;
+sliderMenuBtn.forEach((element, index) => {
+  element.addEventListener('click', () => {
+    sliderMenuBtn.forEach(element => {
+      element.classList.remove('slider-menu__button_active');
+    });
+    element.classList.add('slider-menu__button_active');
+    category = index;
+    slideNum = 0;
+    setSlider();
+  });
+});
 
 function setSlider() {
   let slideNext = slideNum + 1;
@@ -71,37 +79,34 @@ function setSlider() {
     description = 'descriptionRu';
   }
 
-  sliderImg[0].style.backgroundImage = soundtracksData[0][slidePrev].image;
-  sliderImg[1].style.backgroundImage = soundtracksData[0][slideNum].image;
-  sliderImg[2].style.backgroundImage = soundtracksData[0][slideNext].image;
+  sliderImg[0].style.backgroundImage = soundtracksData[category][slidePrev].image;
+  sliderImg[1].style.backgroundImage = soundtracksData[category][slideNum].image;
+  sliderImg[2].style.backgroundImage = soundtracksData[category][slideNext].image;
 
-  sliderName[0].innerHTML = soundtracksData[0][slidePrev][name];
-  sliderName[1].innerHTML = soundtracksData[0][slideNum][name];
-  sliderName[2].innerHTML = soundtracksData[0][slideNext][name];
+  sliderName[0].innerHTML = soundtracksData[category][slidePrev][name];
+  sliderName[1].innerHTML = soundtracksData[category][slideNum][name];
+  sliderName[2].innerHTML = soundtracksData[category][slideNext][name];
 
-  sliderTitle[0].innerHTML = soundtracksData[0][slidePrev][track];
-  sliderTitle[1].innerHTML = soundtracksData[0][slideNum][track];
-  sliderTitle[2].innerHTML = soundtracksData[0][slideNext][track];
+  sliderTitle[0].innerHTML = soundtracksData[category][slidePrev][track];
+  sliderTitle[1].innerHTML = soundtracksData[category][slideNum][track];
+  sliderTitle[2].innerHTML = soundtracksData[category][slideNext][track];
 
-  sliderSubtitle[0].innerHTML = soundtracksData[0][slidePrev][author];
-  sliderSubtitle[1].innerHTML = soundtracksData[0][slideNum][author];
-  sliderSubtitle[2].innerHTML = soundtracksData[0][slideNext][author];
+  sliderSubtitle[0].innerHTML = soundtracksData[category][slidePrev][author];
+  sliderSubtitle[1].innerHTML = soundtracksData[category][slideNum][author];
+  sliderSubtitle[2].innerHTML = soundtracksData[category][slideNext][author];
 
-  sliderDescription[0].innerHTML = soundtracksData[0][slidePrev][description];
-  sliderDescription[1].innerHTML = soundtracksData[0][slideNum][description];
-  sliderDescription[2].innerHTML = soundtracksData[0][slideNext][description];
+  sliderDescription[0].innerHTML = soundtracksData[category][slidePrev][description];
+  sliderDescription[1].innerHTML = soundtracksData[category][slideNum][description];
+  sliderDescription[2].innerHTML = soundtracksData[category][slideNext][description];
 
-  trackTitle.innerHTML = soundtracksData[0][slideNum][author] + " — " + soundtracksData[0][slideNum][track];
-  trackDuration.innerHTML = soundtracksData[0][slideNum].duration;
+  trackTitle.innerHTML = soundtracksData[category][slideNum][author] + " — " + soundtracksData[0][slideNum][track];
+  trackDuration.innerHTML = soundtracksData[category][slideNum].duration;
 }
 setSlider();
 
 const buttonLeft = document.querySelector(".slider__button_left");
 const buttonRight = document.querySelector(".slider__button_right");
 const slider = document.querySelector(".slider__list");
-const leftSlide = document.querySelector(".slider__item_left");
-const centerSlide = document.querySelector(".slider__item_center");
-const rightSlide = document.querySelector(".slider__item_right");
 
 const moveLeft = () => {
   slider.classList.add("transition-left");
@@ -133,4 +138,81 @@ slider.addEventListener("animationend", function (animationEvent) {
   buttonRight.addEventListener("click", moveRight);
 
   setSlider();
+  clearPlayer();
 });
+
+// player
+
+const audio = new Audio();
+let isPlay = false;
+let pauseTime = 0;
+let newInterval;
+const play = document.querySelector('.player-button__play');
+
+function playAudio() {
+  play.classList.toggle('pause');
+  if (!isPlay) {
+    audio.src = soundtracksData[category][slideNum].audio;
+    audio.currentTime = pauseTime;
+    audio.play();
+    isPlay = true;
+    newInterval = setInterval(trackProgress, 1000);
+    trackRange.disabled = false;
+  } else {
+    pauseTime = audio.currentTime;
+    audio.pause();
+    isPlay = false;
+    clearInterval(newInterval)
+    trackRange.disabled = true;
+  }
+}
+
+play.addEventListener('click', playAudio);
+
+const trackRange = document.querySelector('.track__progress')
+
+function trackProgress() {
+  trackRange.value = (Math.floor(audio.currentTime) * 100) / Math.floor(audio.duration);
+
+  let minCurrentTime = Math.floor(audio.currentTime / 60).toString().padStart(2, '0');
+  let secCurrentTime = Math.floor(audio.currentTime % 60).toString().padStart(2, '0');
+  trackCurrentTime.innerHTML = minCurrentTime + ':' + secCurrentTime;
+
+  if (audio.currentTime === audio.duration) clearPlayer();
+}
+
+function clearPlayer() {
+  play.classList.remove('pause');
+  audio.pause();
+  clearInterval(newInterval);
+  isPlay = false;
+  trackRange.value = 0;
+  trackCurrentTime.innerHTML = '00:00';
+  trackRange.disabled = true;
+}
+
+trackRange.addEventListener ('click', () => {
+  audio.currentTime = trackRange.value / 100 * audio.duration;
+});
+
+const volumeButton = document.querySelector('.player-button__volume');
+const volumeLevel = document.querySelector('.player-button__level');
+
+audio.volume = volumeLevel.value;
+
+volumeButton.addEventListener('click', () => {
+  if (audio.muted === false) {
+    audio.muted = true;
+    volumeLevel.value = 0;
+  } else {
+    audio.muted = false;
+    volumeLevel.value = .6;
+  }
+  volumeButton.classList.toggle('muted');
+});
+
+volumeLevel.addEventListener('change', () => {
+  audio.volume = volumeLevel.value;
+});
+
+
