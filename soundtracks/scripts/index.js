@@ -187,6 +187,7 @@ function clearPlayer() {
   clearInterval(newInterval);
   isPlay = false;
   trackRange.value = 0;
+  pauseTime = 0;
   trackCurrentTime.innerHTML = '00:00';
   trackRange.disabled = true;
 }
