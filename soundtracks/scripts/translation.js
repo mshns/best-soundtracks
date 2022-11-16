@@ -25,7 +25,7 @@ const translationData =
       russian: 'Мультики'
     },
     {
-      english: 'TV Show',
+      english: 'TV Shows',
       russian: 'ТВ шоу'
     },
     {
@@ -33,7 +33,7 @@ const translationData =
       russian: 'Мюзиклы'
     },
     {
-      english: 'Game',
+      english: 'Games',
       russian: 'Игры'
     },
     {
