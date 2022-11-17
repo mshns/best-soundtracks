@@ -45,9 +45,13 @@ const translationData =
       russian: 'Лучшие саундтреки<br>© 2022'
     },
     {
-      english: 'Audio Player',
-      russian: 'Плеер'
-    }
+      english: 'Score: ',
+      russian: 'Счёт: '
+    },
+    {
+      english: 'Next Level',
+      russian: 'Следующий уровень'
+    },
 ]
 
 export default translationData;
