@@ -65,10 +65,47 @@
           </div>
         </section>
         <section class="container quiz">
-          <div class="container quiz__question">
-            <ul class="quiz__options"></ul>
+          <div class="container quiz__wrapper">
+
+            <div class="container quiz__question">
+              <ul class="container options__list"></ul>
+            </div>
+
+            <div class="container quiz__answer">
+
+              <div class="answer__info">
+
+                <div class="answer__img"></div>
+
+                <div class="answer__details">
+                  <h2 class="answer__title">титаник</h2>
+                  <h3 class="answer__subtitle">песня песня пенся</h3>
+                  <h3 class="answer__subtitle">селин дион</h3>
+
+                  <div class="answer__player">
+                    <div class="answer-button__play"></div>
+                    <div class="answer__track">
+                      <input class="answer-track__progress" type="range" min="0" max="100" value="0" step="1" disabled>
+                      <div class="answer-track__control">
+                        <div class="answer-track__volume">
+                          <div class="answer-button__volume"></div>
+                          <input class="answer-button__level" type="range" min="0" max="1" value=".6" step=".05">
+                        </div>
+                        <div class="answer__time">
+                          <div class="answer-time__progress">00:00</div>
+                          <div class="answer-time__duration">00:00</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                </div>
+              </div>
+              <p class="answer__description">212121212121</p>
+            </div>
           </div>
-          <div class="container quiz__answer"></div>
           <button class="button__level">Next Level</button>
         </section>
       </main>
