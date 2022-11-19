@@ -49,8 +49,12 @@ const translationData =
       russian: 'Счёт: '
     },
     {
-      english: 'Next Level',
-      russian: 'Следующий уровень'
+      english: 'Next',
+      russian: 'Далее'
+    },
+    {
+      english: 'Listen to this soundtrack<br>and make your choice',
+      russian: 'Послушайте этот саундтрек<br>и сделайте свой выбор'
     },
 ]
 

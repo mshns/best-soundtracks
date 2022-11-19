@@ -182,7 +182,7 @@ const soundtracksData = [
       descriptionRu: 'Автором музыки к «Секретным материалам» стал композитор Марк Сноу. Он начал работу над проектом в 1993 году после того, как к нему обратился исполнительный продюсер телесериала Крис Картер.<br><br>Сноу стал одним из дюжины кандидатов, которых порекомендовали на эту позицию. Через несколько недель после первой встречи Картер сообщил Сноу, что ему доверено написание музыки к пилотной серии «Секретных материалов».<br><br>Успех сериала привёл к тому, что Сноу и Картер продолжили работу. Первый компакт-диск с музыкой к сериалу The Truth and The Light вышел через два после начала работы. Помимо музыкальных композиций он содержал фрагменты диалогов из фильма.<br><br>Основной темой сериала стала композиция «Materia Primoris». Композиция получила всемирную известность и занимала первое место в хит-парадах Франции и Англии.',
       image: 'url(../../assets/img/x-files.webp',
       audio: '../../assets/sound/x-files.mp3',
-      duration: '00:47',
+      duration: '00:19',
       wikiEn: 'https://en.wikipedia.org/wiki/The_X-Files_(composition)',
       wikiRu: 'https://ru.wikipedia.org/wiki/%D0%A1%D0%B5%D0%BA%D1%80%D0%B5%D1%82%D0%BD%D1%8B%D0%B5_%D0%BC%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8B_(%D1%81%D0%B0%D1%83%D0%BD%D0%B4%D1%82%D1%80%D0%B5%D0%BA%D0%B8)',
       youtube: 'https://youtu.be/Qz2wnSVeITg'
@@ -311,14 +311,14 @@ const soundtracksData = [
   [
     {
       id: 1,
-      nameEn: 'Who Wants to Be a Millionaire?',
-      nameRu: 'Кто хочет стать миллионером?',
+      nameEn: 'Millionaire',
+      nameRu: 'О, счастливчик!',
       trackEn: 'Who Wants to Be a Millionaire',
       trackRu: 'Кто хочет стать миллионером',
       authorEn: 'Matthew Strachan',
       authorRu: 'Мэтью Стрэкан',
-      descriptionEn: 'Matthew Strachan was an English composer and singer-songwriter. His best known work is the music for British television game show Who Wants to Be a Millionaire? written with his father Keith, which would become a global franchise, and the BBC Radio 4 World War I drama series Home Front.<br><br>He also wrote music to film and television productions such as Extract, The Detectives, Question Time, Winning Lines, jingles for several television commercials, and scores for stage musicals.',
-      descriptionRu: 'Мэттью Стрэкан — английский композитор и певец-поэт-песенник. Его самая известная работа — музыка для телевизионного игрового шоу «Кто хочет стать миллионером?», которую он написал вместе со своим отцом Китом.<br><br>Он также создал музыку к фильмам и телевизионным постановкам, таким как Extract, The Detectives, Question Time, Winning Lines, а также джинглы для нескольких рекламных роликов и сценических мюзиклов.',
+      descriptionEn: 'Matthew Strachan was an English composer and singer-songwriter. His best known work is the music for British television game show Who Wants to Be a Millionaire? (often informally called Millionaire) written with his father Keith, which would become a global franchise, and the BBC Radio 4 World War I drama series Home Front.<br><br>He also wrote music to film and television productions such as Extract, The Detectives, Question Time, Winning Lines, jingles for several television commercials, and scores for stage musicals.',
+      descriptionRu: 'Мэттью Стрэкан — английский композитор и певец-поэт-песенник. Его самая известная работа — музыка для телевизионного игрового шоу «Кто хочет стать миллионером?» (также известная, как «О, счастливчик!»), которую он написал вместе со своим отцом Китом.<br><br>Он также создал музыку к фильмам и телевизионным постановкам, таким как Extract, The Detectives, Question Time, Winning Lines, а также джинглы для нескольких рекламных роликов и сценических мюзиклов.',
       image: 'url(../../assets/img/millionaire.webp',
       audio: '../../assets/sound/millionaire.mp3',
       duration: '00:19',
