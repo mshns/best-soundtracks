@@ -115,22 +115,27 @@ options.forEach((element, index) => {
 
 btnLevel.addEventListener('click', () => {
   level++;
-  secret = getSecret(0, soundtracksData[level].length - 1);
-  options.forEach(element => {
+  if (level > 5) {
+    localStorage.setItem("score-mshns", scoreCount);
+    document.location.href = '../score/';
+  } else {
+    secret = getSecret(0, soundtracksData[level].length - 1);
+    options.forEach(element => {
     element.classList.remove('right');
     element.classList.remove('wrong');
     element.classList.remove('disable');
-  });
-  clearAnswer();
-  setOptions();
-  clearPlayer();
-  clearPlayerAnswer();
-  questionsLevel[level - 1].classList.remove('questions__item_active');
-  questionsLevel[level].classList.add('questions__item_active');
-  scorePlus = 5;
-  isWin = false;
-  btnLevel.classList.toggle('active');
-  secretImg.style.backgroundImage = '';
+    });
+    clearAnswer();
+    setOptions();
+    clearPlayer();
+    clearPlayerAnswer();
+    questionsLevel[level - 1].classList.remove('questions__item_active');
+    questionsLevel[level].classList.add('questions__item_active');
+    scorePlus = 5;
+    isWin = false;
+    btnLevel.classList.toggle('active');
+    secretImg.style.backgroundImage = '';
+  }
 });
 
 clearAnswer();
