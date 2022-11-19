@@ -5,7 +5,7 @@ import translationData from "./translation.js";
 
 const langSelect = document.querySelector(".header__select");
 
-if (localStorage.getItem("language")) langSelect.value = localStorage.language;
+if (localStorage.getItem("language_mshns")) langSelect.value = localStorage.language_mshns;
 
 const logoTitle = document.querySelector(".logo__title");
 const navLink = document.querySelectorAll(".nav__link");
@@ -31,7 +31,7 @@ translate();
 langSelect.addEventListener('change', () => {
   setSlider();
   translate();
-  localStorage.setItem("language", langSelect.value)
+  localStorage.setItem("language_mshns", langSelect.value)
 });
 
 // slider

@@ -56,6 +56,26 @@ const translationData =
       english: 'Listen to this soundtrack<br>and make your choice',
       russian: 'Послушайте этот саундтрек<br>и сделайте свой выбор'
     },
+    {
+      english: 'Congratulations!<br>You have passed the quiz and scored',
+      russian: 'Поздравляем!<br>Вы прошли викторину и набрали'
+    },
+    {
+      english: 'of',
+      russian: 'из'
+    },
+    {
+      english: 'possible points!',
+      russian: 'возможных баллов!'
+    },
+    {
+      english: 'You are a true soundtrack pro!',
+      russian: 'Вы профессионал в саундтреках!'
+    },
+    {
+      english: 'Try again',
+      russian: 'Попробовать ещё'
+    },
 ]
 
 export default translationData;

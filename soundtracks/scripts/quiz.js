@@ -5,7 +5,7 @@ import translationData from "./translation.js";
 
 const langSelect = document.querySelector(".header__select");
 
-if (localStorage.getItem("language")) langSelect.value = localStorage.language;
+if (localStorage.getItem("language_mshns")) langSelect.value = localStorage.language_mshns;
 
 const logoTitle = document.querySelector(".logo__title");
 const navLink = document.querySelectorAll(".nav__link");
@@ -66,7 +66,7 @@ translate();
 
 langSelect.addEventListener('change', () => {
   translate();
-  localStorage.setItem("language", langSelect.value);
+  localStorage.setItem("language_mshns", langSelect.value);
 });
 
 // quiz
@@ -116,7 +116,7 @@ options.forEach((element, index) => {
 btnLevel.addEventListener('click', () => {
   level++;
   if (level > 5) {
-    localStorage.setItem("score-mshns", scoreCount);
+    localStorage.setItem("score_mshns", scoreCount);
     document.location.href = '../score/';
   } else {
     secret = getSecret(0, soundtracksData[level].length - 1);
